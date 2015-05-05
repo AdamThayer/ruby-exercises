@@ -38,11 +38,25 @@ def find book
 end
 
 def add_book author, title
-#TODO
+  books = @favorite_books[author]
+  if books
+    books << title
+  else
+    @favorite_books[author] = [title]
+  end
 end
 
 def delete_book author, title
-#TODO
+  books = @favorite_books[author]
+  if books
+    if books.include? title
+      books.delete title
+    else
+      puts "No book"
+    end
+  else
+    puts "No author"
+  end
 end
 
 def handle_command command, arg

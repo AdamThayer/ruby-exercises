@@ -2,7 +2,7 @@ snowy = File.read 'the-man-from-snowy-river.txt'
 
 snowy_lines = snowy.lines
 
-split_pattern = /[\W]+/
+split_pattern = /\W+/
 snowy_words = snowy.split split_pattern
 
 #Example

@@ -22,6 +22,11 @@ puts (clancy_words - snowy_words).uniq.join ', '
 
 puts
 puts "The longest word in snowy is"
+
+
+sorted_by_length = snowy_words.sort_by{|word| word.length}
+if sorted_by_length
+
 puts "…"
 
 #Here, find the words that are in Snowy but not in the dictionary

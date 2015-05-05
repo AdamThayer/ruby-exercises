@@ -2,7 +2,7 @@ snowy = File.read 'the-man-from-snowy-river.txt'
 
 snowy_lines = snowy.lines
 
-split_pattern = /[\W]+/
+split_pattern = /\W+/
 snowy_words = snowy.split split_pattern
 
 #Example
@@ -17,11 +17,16 @@ puts
 puts "Here are the lines of Snowy that have an odd number of words"
 #hint: a % b is the remainder after you divide a by b (called "mod" or "modulus")
 # for example 17 % 2 == 1
-puts "…"
-
+snowy_lines.each do |line|
+    if line.split(split_pattern).count % 2 == 1
+puts '  ' + line
+    end
+end
 puts
 puts "Here is Snowy double-spaced"
-puts "…"
+snowy_lines.each do |line|
+  puts line + "\n\n"
+end
 
 puts
 puts "Here are all the rhyming pairs from the ends of the Snowy lines"
@@ -33,6 +38,10 @@ while i < snowy_lines.count
   # get the last word from the words using .last
   # grab the last words four at a time and then print out the first and third,
   # then the second and fourth
-  puts
-  i += 9 # This is a short way of writing i = i + 1
+  a = snowy_lines[i].split(split_pattern).last
+  b = snowy_lines[i + 1].split(split_pattern).last
+  aa = snowy_lines[i + 2].split(split_pattern).last
+  puts "#{a}, #{aa}"
+
+  i += 9 # This is a short way of writing i = i + 9
 end
