@@ -8,7 +8,7 @@ clancy_words = clancy.split /\W+/
 
 #A set is a data structure that can have things added and removed, and you can ask if things are in it. You can make one from an array
 words = File.read('/usr/share/dict/words').lines.map{|w| w.chomp}
-words = words.select{|word| word[0] > 'a' && word[0] < 'z'}
+words = words.select{|word| word[0] >= 'a' && word[0] <= 'z'}
 Dictionary = Set.new words
 
 def in_dictionary? word
@@ -21,6 +21,7 @@ def name? word
 end
 
 snowy_names = snowy_words.select{|word| name? word}
+puts snowy_names.length
 clancy_names = clancy_words.select{|word| name? word}
 
 #We can treat arrays as sets, and use + for union, - for difference
@@ -45,7 +46,7 @@ puts snowy_names.join ', '
 
 puts
 puts "Names in both Snowy and Clancy:"
-puts (snowy_names & clancy_names).join ', '
+puts (snowy_names & clancy_names).length
 
 #Change this so it uses an array rather than a set. Marvel at how much slower it is.
 #You can time how long something takes to run in bash by doing time before the command.
